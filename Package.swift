@@ -17,7 +17,8 @@ let package = Package(
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "3.0.0")),
 
         // 🔵 Swift ORM (queries, models, relations, etc) built on SQLite 3.
-        .package(url: "https://github.com/vapor/fluent-sqlite.git", .upToNextMajor(from: "3.0.0"))
+        .package(url: "https://github.com/vapor/fluent", .upToNextMajor(from: "3.0.0")),
+        .package(url: "https://github.com/vapor/sql", .upToNextMajor(from: "2.0.0"))
 
     ],
     targets: [
@@ -25,7 +26,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "DataTables",
-            dependencies: ["Vapor", "FluentSQLite"]),
+            dependencies: ["Vapor", "Fluent", "SQL"]),
         .testTarget(
             name: "DataTablesTests",
             dependencies: ["DataTables"]),
