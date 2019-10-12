@@ -73,7 +73,6 @@ struct DataTablesController<ModelType: Model> where ModelType.Database.QueryFilt
 
         var filterSearch = false
         var query = ModelType.query(on: req)
-        self.formatter.dateFormat = "dd.MM.yyyy"
 
         // apply filters
         for column in dataTablesRequest.columns {
@@ -135,7 +134,7 @@ private extension DataTablesController {
             var stringData: [String] = []
             for key in self.keyPaths {
                 if let value = data[keyPath: key] {
-                        if let optionalValue = value as? OptionalProtocol {
+                    if let optionalValue = value as? OptionalProtocol {
                         if optionalValue.isSome() {
                             stringData.append("\(optionalValue.unwrap() is Date ? self.formatter.string(from: optionalValue.unwrap() as! Date) : optionalValue.unwrap())")
                         } else {
