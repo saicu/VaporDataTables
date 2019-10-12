@@ -11,6 +11,7 @@ struct DataTablesController<ModelType: Model> where ModelType.Database.QueryFilt
         self.modelType = modelType
         self.keyPaths = keyPaths
         self.formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
     }
 
     init(_ modelType: ModelType.Type, keyPaths: [AnyKeyPath], dateFormatter: DateFormatter) {
